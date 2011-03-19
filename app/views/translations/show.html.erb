@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Source:</b>
+  <%= @translation.source.content %>
+</p>
+
+<p>
+  <b>Target:</b>
+  <%= @translation.target.content %>
+</p>
+
+<p>
+  <b>Domains:</b>
+  <%= @translation.domain.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_translation_path(@translation) %> |
+<%= link_to 'Back', translations_path %>

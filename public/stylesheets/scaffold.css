@@ -72,3 +72,7 @@ div.field, div.actions {
 .clear {
   clear: both;
 }
+
+.domain_row input[type=checkbox] {
+  display: none;
+}

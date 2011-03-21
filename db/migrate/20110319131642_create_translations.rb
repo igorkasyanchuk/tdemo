@@ -3,7 +3,6 @@ class CreateTranslations < ActiveRecord::Migration
     create_table :translations do |t|
       t.integer :source_id
       t.integer :target_id
-      t.integer :domain_id
       t.boolean :is_public, :default => false
     end
   end

@@ -1,15 +1,12 @@
 class Translation < ActiveRecord::Base
   has_one :source, :dependent => :destroy
   has_one :target, :dependent => :destroy
-  #has_one :domain, :dependent => :destroy
-  
-  #has_many :domains, :class_name => "domain", :foreign_key => "reference_id"
-  
+
   has_and_belongs_to_many :domains
   
   accepts_nested_attributes_for :source
   accepts_nested_attributes_for :target
-  accepts_nested_attributes_for :domains, :reject_if => proc {|attrs| attrs['content'].blank? }
+  accepts_nested_attributes_for :domains, :reject_if => proc {|attrs| attrs['content'].blank? }, :allow_destroy => true
   
   def Translation.new_with_relations
     translation = Translation.new

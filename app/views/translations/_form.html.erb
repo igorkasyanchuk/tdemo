@@ -23,6 +23,9 @@
     <div class="domain_row <%= ff.object.new_record? ? 'new_domain none' : 'existing_domain'%>">
       <%= ff.label :content, "Domain" %><br />
       <%= ff.text_field :content %>
+      <%- unless ff.object.new_record? %>
+        <%= ff.check_box :_destroy %>
+      <%- end %>
       <a href='#remove' class='remove_domain_row'>remove domain</a>
     </div>
   <% end %>

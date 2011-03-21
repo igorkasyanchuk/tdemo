@@ -3,12 +3,31 @@
 <head>
   <title>Translationdemo</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jquery-1.4.4.min', 'application' %>
   <%= csrf_meta_tag %>
+  <script type='text/javascript'>
+    $(function(){
+      <%= yield :on_ready %>
+    });
+  </script>
 </head>
 <body>
-
-<%= yield %>
+  
+  <div class='nav'>
+    <%- if logged_in? %>
+      <%= link_to 'Translations', [current_user, :translations] %>
+      <%= link_to "Logout", logout_user_session_path %>
+    <% else %>
+      <%= link_to 'Sign up', new_user_path %>
+      <%= link_to 'Login', new_user_session_path %>
+    <% end %>
+  </div>
+  
+  <%= raw flash_messages %>
+  
+  <div class='content'>  
+    <%= yield %>
+  </div>
 
 </body>
 </html>

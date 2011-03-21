@@ -5,3 +5,7 @@ gem 'sqlite3'
 gem 'inherited_resources', '~> 1.2.1'
 gem 'responders'
 gem 'has_scope'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'haml-rails' 
+gem "simple_form"
+gem 'dynamic_form'

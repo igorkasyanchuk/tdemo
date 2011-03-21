@@ -4,7 +4,7 @@
   <tr>
     <th>Source</th>
     <th>Target</th>
-    <th>Domain</th>
+    <th>Domains</th>
     <th>Public?</th>
     <th></th>
     <th></th>
@@ -15,15 +15,15 @@
   <tr>
     <td><%= translation.source.content %></td>
     <td><%= translation.target.content %></td>
-    <td><%= translation.domain.content %></td>
+    <td><%= translation.domains.collect{|d| d.content}.join(",") %></td>
     <td><%= translation.is_public ? "Yes" : "No" %></td>
-    <td><%= link_to 'Show', translation %></td>
-    <td><%= link_to 'Edit', edit_translation_path(translation) %></td>
-    <td><%= link_to 'Destroy', translation, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [@user, translation] %></td>
+    <td><%= link_to 'Edit', [:edit, @user, translation] %></td>
+    <td><%= link_to 'Destroy', [@user, translation], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Translation', new_translation_path %>
+<%= link_to 'New Translation', [:new, @user, :translation] %>

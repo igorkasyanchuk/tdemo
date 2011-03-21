@@ -1,15 +1,9 @@
-<%= form_for(@translation) do |f| %>
-  <% if @translation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@translation.errors.count, "error") %> prohibited this translation from being saved:</h2>
+<%= content_for :on_ready do %>
+  init_translation_form();
+<% end %>
 
-      <ul>
-      <% @translation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for([@user, @translation]) do |f| %>
+  <%= f.error_messages %>
 
   <%= f.fields_for :source do |ff| %>
     <%= ff.label :content, "Source term" %><br />
@@ -25,10 +19,14 @@
   
   <br/>
 
-  <%= f.fields_for :domain do |ff| %>
-    <%= ff.label :content, "Domain" %><br />
-    <%= ff.text_field :content %>
+  <%= f.fields_for :domains do |ff| %>
+    <div class="domain_row <%= ff.object.new_record? ? 'new_domain none' : 'existing_domain'%>">
+      <%= ff.label :content, "Domain" %><br />
+      <%= ff.text_field :content %>
+      <a href='#remove' class='remove_domain_row'>remove domain</a>
+    </div>
   <% end %>
+  <a href='#add' class='add_domain_row'>add domain</a>
   
   <br/>
   

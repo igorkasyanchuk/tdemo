@@ -54,3 +54,21 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+.none {
+  display: none;
+}
+
+.domains_form {
+  float: left;
+}
+
+.domains_form_controls {
+  float: left;
+  margin-left: 15px;
+  padding-top: 22px;
+}
+
+.clear {
+  clear: both;
+}
